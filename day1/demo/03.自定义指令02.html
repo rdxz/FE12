@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <script src="https://cdn.bootcss.com/angular.js/1.4.1/angular.min.js"></script> -->
+  <script src="https://cdn.bootcss.com/angular.js/1.6.7/angular.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body ng-app="docsSimpleDirective">
+  <div ng-controller="Controller">
+    <div stark-wang></div>
+    <div class="stark-wang"></div>
+    <stark-wang></stark-wang>
+    <!-- direcive:stark-wang -->
+  </div>
+  <script>
+    angular.module('docsSimpleDirective', [])
+
+      .controller('Controller', ['$scope', function ($scope) {
+        $scope.customer = {
+          name: 'stark',
+          address: '1600 Amphitheatre'
+        };
+      }])
+      .directive('starkWang', function () {
+        return {
+          template: 'Name: {{customer.name}} Address: {{customer.address}}',
+          restrict: 'ECMA',
+
+        };
+      });
+
+  </script>
+</body>
+
+</html>
