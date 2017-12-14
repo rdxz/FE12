@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+     <shudong>hi hi hi </shudong>
+  </div>
+  <script type="x-template" id="box">
+    <div>
+      <h1> slot  插槽使用方式</h1>
+      <div>hello</div>
+      
+    </div>
+  </script>
+</body>
+<script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: "shudong",
+        html: '<div> hello stark</div>'
+      },
+      // template: "#box"
+      components:{
+        'shudong':{
+            template:'#box'
+        }
+      }
+    })
+</script>
+
+</html>
