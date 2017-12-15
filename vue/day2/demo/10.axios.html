@@ -21,8 +21,21 @@
     },
     methods:{
       getMovie(){
-        axios.get('')
+        axios.get('https://easy-mock.com/mock/59664d4d58618039284c7710/example/movie')
+        .then(res =>{
+          console.log(res.data)
+        })
+      },
+      postMovie(){
+        axios.post('https://easy-mock.com/mock/59664d4d58618039284c7710/example/movie_post')
+        .then(res=>{
+          console.log(res.data)
+        })
       }
+    },
+    created(){
+      // this.getMovie();
+      this.postMovie();
     }
   })
 </script>
