@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="vue.min.js"></script>
+</head>
+
+<body>
+  <div id="box">
+    {{anum}}
+    </br>
+    {{bnum}}
+  </div>
+</body>
+<script>
+  let vm = new Vue({
+    el: '#box',
+    data: {
+      anum: 1111,
+      bnum: 2222,
+      obj:{
+        name:'stark',
+        age:18
+      }
+    }
+  })
+  vm.$watch('obj', function () {
+    // 此时不弹 需要深度监听
+    alert(this.obj.name)
+    // this.bnum = this.anum + 1000;
+  })
+  document.onclick = function () {
+    vm.obj.name = 'shudong';
+  }
+</script>
+
+</html>

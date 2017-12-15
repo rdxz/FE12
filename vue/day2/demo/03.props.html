@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="vue.min.js">
+    
+  </script>
+<link href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet">  <title>Document</title>
+</head>
+<body>
+  <!-- <button class="ui primary button">保存 </button>
+  <button class="ui primary button">复制 </button>
+  <button class="ui primary button">剪切 </button> -->
+
+  <div id="app"> 
+      <ui-button text="保存"></ui-button>
+      <ui-button text="剪切"></ui-button>
+      <ui-button text="复制"></ui-button>
+  </div>
+</body>
+<script>
+  Vue.component('ui-button',{
+    template:'<button class="ui inverted yellow button">{{text}}</button>',
+    props:['text']
+  })
+  let vm = new Vue({
+    el:'#app',
+    data:{
+      msg:'hi'
+    }
+  })
+</script>
+</html>

@@ -25,12 +25,13 @@
   Vue.component('stark',{
     data:function(){
       return {
-        show:false
+        show:false,
+        msg:'sssssss'
       }
     },
     template: `
         <div>
-          <h1> hi stark </h1>
+          <h1> hi stark {{msg}}</h1>
         </div>     
       `
   })
