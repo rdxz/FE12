@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link href="https://cdn.bootcss.com/semantic-ui/2.2.13/semantic.min.css" rel="stylesheet">  <title>Document</title>
+
   <script src="vue.min.js">
     
   </script>
@@ -15,6 +17,13 @@
       github:id: <input type="text" v-model="uid">
       <button type="" @click='getGitUser(uid)'>请求github账号信息</button>
       <button type="" @click='postMovie'>postMovie</button>
+      百度搜索：<input type="text" name="" v-model="word" value="" @keyup="jsonp">
+      <ul>
+        <li v-for="item in search">
+          {{item}}
+        </li>
+      </ul>
+
       姓名：{{user.name}}
       <img :src="user.avatar_url" alt="">
 
@@ -33,11 +42,13 @@
     data:{
       user:{},
       uid:'',
-      movie:{}
+      movie:{},
+      word:'',
+      search:[]
     },
     methods:{
       getGitUser(uid){
-        this.$http.res(`https://api.github.com/users/${uid}`)
+        this.$http.get(`https://api.github.com/users/${uid}`)
         .then(res =>{
           this.user = res.data;
         })
@@ -47,6 +58,17 @@
         .then(res=>{
           console.log(res.data)
           this.movie = res.data.subjects;
+        })
+      },
+      jsonp:function(){
+          this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+          params:{
+            wd:this.word
+          },
+          jsonp:'cb'
+        }).then(res=>{
+          console.log(res)
+          this.search = res.data.s;
         })
       }
     }
