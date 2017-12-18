@@ -10,3 +10,6 @@ https://github.com/itguide/FE12.git
 
 ## 论坛
 bbs.shudong.wang
+
+2017年12月18日09:04:06
+day3：项目cli
