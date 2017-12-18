@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <a href="#/work">工作</a>
+    <a href="#/study">学习</a>
+
+    <router-link to="/" exact>stark</router-link>
+    <router-link to="/work" tag="li">工作</router-link>
+    <router-link active-class="shudong" to="/study">学习</router-link>
     <router-view/>
   </div>
 </template>
@@ -18,5 +24,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.router-link-active{
+  color:yellow;
+}
+.shudong{
+  color:red;
 }
 </style>
