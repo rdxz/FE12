@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router  from 'vue-router'
 import Stark from '@/components/Stark'
+import Article from '@/components/Article'
 
 const Study = {template:`<div>this study page</div>`}
 const Work = {template:`<div>this work page</div>`}
@@ -20,6 +21,10 @@ export default new Router({
     path: '/study',
     name: 'study',
     component: Study 
+  },{
+    path: '/article/:page?',
+      name: 'article',
+      component: Article 
   },{
     path: '/work',
     path: '/work',

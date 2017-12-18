@@ -5,6 +5,7 @@
 
     <router-link to="/" exact>stark</router-link>
     <router-link to="/work" tag="li">工作</router-link>
+    <router-link to="/article/1" tag="li">文章 </router-link>
     <router-link active-class="shudong" to="/study">学习</router-link>
     <router-view/>
   </div>
