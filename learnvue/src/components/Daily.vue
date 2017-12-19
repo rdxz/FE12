@@ -1,44 +1,43 @@
 <template>
-  <div>
-    <div v-for="item in movie">
-      电影名字：{{item.title}}
-      图片 <img :src="item.images.medium">
+    <div>
+        <div v-for="(item,index) in stories" :key="index">
+            <div>名字：{{item.title}}</div>
+            <div>描述：{{item.ga_prefix}}</div>
+            <div>图片：<img :src="getImage(item.images)" :alt="item.title"></div>
+        </div>
     </div>
-    电影：
-  </div>
 </template>
-<script>
-  import axios from 'axios'
-  // var axios =  require('axios')
-  export default{
-    data(){
-      return{
-        DailList:'',
-        movie:''
-      }
-    },
-    created(){
-      this.getDailList()
-      // this.getDailMove()
 
-    },
-    methods:{
-      getDailMove(){
-        // axios.get('https://news-at.zhihu.com/api/4/news/latest')
-        axios.get('https://easy-mock.com/mock/59664d4d58618039284c7710/example/movie')
-        .then(res=>{
-          this.movie = res.data.subjects;
-          console.log(this.movie);
-        })
-      },
-      getDailList(){
-        // https://news-at.zhihu.com
-        axios.get('/api/news/latest')
-        // axios.get('/moive')
-        .then(res=>{
-          console.log(res);
-        })
-      }
+<script>
+    import axios from 'axios';
+
+    export default {
+        data(){
+            return{
+                stories:{}
+            }
+        },
+        created(){
+            this.getHero()
+        },
+        methods:{
+            getHero(){
+                // https://news-at.zhihu.com/api/4/news/latest
+                // axios.get('http://hero.shudong.wang/v1/db.php')
+                axios.get('/api/news/latest')
+                .then(res=>{
+                    this.stories = res.data.stories;
+                })
+            },
+            getImage(url){
+                console.log(url);
+                // 把现在的图片连接传进来，返回一个不受限制的路径
+                if(url !== undefined){
+                    return url[0].replace(/http\w{0,1}:\/\/p/g,'https://images.weserv.nl/?url=p');
+                }
+            }
+        }
     }
-  }
 </script>
+
+

@@ -15,12 +15,17 @@ module.exports = {
       // 背后使用node js 请求下面真实的url，然后把数据给你
       //  因为node不会跨域
       // https://news-at.zhihu.com/api/4/news/latest
-      '/api':{
-        target:'https://news-at.zhihu.com',
-        changeOrigin: true,
-        pathRewrite:{
+
+      // '/api/news/latest'
+      '/api':{ //监听路由含有 以/api 开头的路由，就走下面的规则
+        target:'https://news-at.zhihu.com', // 把主机替换掉这个地址
+        changeOrigin: true, 
+        pathRewrite:{ //重写
           '^/api':'/api/4',
-          // https://news-at.zhihu.com/api/4 + /news/latest
+          // https://news-at.zhihu.com + /api/4 + /news/latest
+          
+          // 最终访问的url是下面的
+          // https://news-at.zhihu.com/api/4/news/latest
         },
         '/moive':{
           target: 'https://easy-mock.com/mock/59664d4d58618039284c7710/example/movie',
